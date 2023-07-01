@@ -104,7 +104,7 @@ class Net(nn.Module):
         self.transblock1 = self.transitionBlock(in_channels=23, out_channels=32,
                                                 padding=0, skip=False,
                                                 de_sep_conv=False, dropout= dropout,
-                                                dilation=1, num_iter=2) # output_size = 30, rf_out = 7
+                                                dilation=1) # output_size = 30, rf_out = 7
         
         ##### Convolution Block - 2 #####
         # Dilation=1 applied in the 2 convolutions layers created with this code
@@ -122,7 +122,7 @@ class Net(nn.Module):
         self.transblock2 = self.transitionBlock(32, 63,
                                         padding=0, skip=False,
                                         de_sep_conv=False, dropout= dropout,
-                                        dilation=2, num_iter=2) # output_size = 26, rf_out = 15
+                                        dilation=2) # output_size = 26, rf_out = 15
         
         ##### Convolution Block - 3 #####
         # Dilation=1 applied in the 2 convolutions layers created with this code
@@ -140,7 +140,7 @@ class Net(nn.Module):
         self.transblock3 = self.transitionBlock(in_channels=63, out_channels=93,
                                         padding=0, skip=False,
                                         de_sep_conv=False, dropout= dropout,
-                                        dilation=4, num_iter=2) # output_size = 18, rf_out = 27
+                                        dilation=4) # output_size = 18, rf_out = 27
         
         ##### Convolution Block - 4 #####
         # Dilation=1 applied in the 2 convolutions layers created with this code
@@ -158,7 +158,7 @@ class Net(nn.Module):
         self.transblock4 = self.transitionBlock(in_channels=93, out_channels=93,
                                         padding=0, skip=False,
                                         de_sep_conv=False, dropout= dropout,
-                                        dilation=8, num_iter=2) # output_size = 2, rf_out = 47
+                                        dilation=8) # output_size = 2, rf_out = 47
         
         ##### Output Block #####
         # GAP + 1x1
@@ -199,7 +199,7 @@ class Net(nn.Module):
     def transitionBlock(in_channels, out_channels, 
                     bias=False, padding=0, 
                     skip=False, de_sep_conv=False, 
-                    dilation=1, dropout=0, num_iter=2):
+                    dilation=1, dropout=0):
         
         tr_layer_seq =  convLayer(l_input_c=in_channels, l_output_c=out_channels,
                             bias=bias, padding=padding,
