@@ -28,6 +28,7 @@ To run this code, we can create an instance of the Net class, pass input data th
 
 The receptive field at the output block of this model is 48
 
+
 =====================================================================================================================================================================
 Layer (type:depth-idx)                   Input Shape               Output Shape              Param #                   Kernel Shape              Param %
 =====================================================================================================================================================================
